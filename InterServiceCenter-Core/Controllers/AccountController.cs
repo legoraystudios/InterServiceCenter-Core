@@ -38,7 +38,7 @@ public class AccountController : ControllerBase
         return Ok(account);
     }
 
-    [HttpPost("upload/profile-photo")]
+    [HttpPost("profile-photo")]
     public IActionResult SaveProfilePhoto([FromForm] AddAttachmentDTO attachment)
     {
         var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
@@ -47,7 +47,16 @@ public class AccountController : ControllerBase
         return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
     }
     
-    [HttpDelete("remove/profile-photo/{id}")]
+    [HttpPut("profile-photo")]
+    public IActionResult ModifyProfilePhoto([FromForm] AddAttachmentDTO attachment)
+    {
+        var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
+
+        Task<JsonResponse> response = _accountService.ModifyProfilePhoto(attachment, loggedEmail);
+        return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
+    }
+    
+    [HttpDelete("profile-photo/{id}")]
     public IActionResult RemoveProfilePhoto(int id)
     {
         var loggedEmail = _token.GetLoggedEmail(HttpContext.User);

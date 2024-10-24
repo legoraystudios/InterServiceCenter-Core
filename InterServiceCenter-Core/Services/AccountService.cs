@@ -58,6 +58,48 @@ public class AccountService
         return new JsonResponse{ StatusCode = 200, Message = "Profile photo saved successfully!"};
     }
 
+    public async Task<JsonResponse> ModifyProfilePhoto(AddAttachmentDTO account, string loggedEmail)
+    {
+        var checkIfAccountExist = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == account.Id);
+
+        if (checkIfAccountExist == null)
+        {
+            return new JsonResponse{ StatusCode = 404, Message = "ERROR: Account doesn't exist in our records."};
+        }
+        
+        if (checkIfAccountExist.ProfilePhotoFile == null)
+        {
+            return new JsonResponse{ StatusCode = 404, Message = "ERROR: You already have a profile photo."};
+        }
+
+        if (loggedEmail != checkIfAccountExist.Email)
+        {
+            return new JsonResponse{ StatusCode = 404, Message = "ERROR: You don't have permissions to perform this action."};
+        }
+
+        if (account.ImageFile == null)
+        {
+            return new JsonResponse{ StatusCode = 404, Message = "ERROR: You must upload an image."};
+        }
+
+        if (account.ImageFile?.Length > 10 * 1024 * 1024)
+        {
+            return new JsonResponse{ StatusCode = 400, Message = "ERROR: File size should not exceed 10 MB's."};
+        }
+        
+        string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+
+        string existingFileName = checkIfAccountExist.ProfilePhotoFile;
+        string createdImageName = await _fileService.ModifyProfilePhoto(account.ImageFile, allowedFileExtentions, existingFileName);
+
+        checkIfAccountExist.ProfilePhotoFile = createdImageName;
+
+        _dbContext.IscAccounts.Update(checkIfAccountExist);
+        _dbContext.SaveChanges();
+        
+        return new JsonResponse{ StatusCode = 200, Message = "Profile photo modified successfully!"};
+    }
+
     public JsonResponse RemoveProfilePhoto(int id, string loggedEmail)
     {
         var checkIfAccountExist = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == id);
