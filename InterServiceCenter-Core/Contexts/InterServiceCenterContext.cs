@@ -22,7 +22,7 @@ public partial class InterServiceCenterContext : DbContext
     public virtual DbSet<IscDevicesession> IscDevicesessions { get; set; }
 
     public virtual DbSet<IscPost> IscPosts { get; set; }
-
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -68,7 +68,7 @@ public partial class InterServiceCenterContext : DbContext
             entity.HasIndex(e => e.PublishedBy, "PublishedBy");
 
             entity.Property(e => e.Id).HasColumnType("int(11)");
-            entity.Property(e => e.FrontImage).HasColumnType("blob");
+            entity.Property(e => e.FrontBannerFile).HasMaxLength(255);
             entity.Property(e => e.PublishedAt).HasColumnType("datetime");
             entity.Property(e => e.PublishedBy).HasColumnType("int(11)");
             entity.Property(e => e.Title).HasMaxLength(255);

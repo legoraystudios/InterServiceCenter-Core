@@ -19,7 +19,6 @@ public class PostService
     public JsonResponse CreatePost(IscPost post)
     {
         
-        
         return new JsonResponse{ StatusCode = 200, Message = "Post modified successfully!"};
     }
 

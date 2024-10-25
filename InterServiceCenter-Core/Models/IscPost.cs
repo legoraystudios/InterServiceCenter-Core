@@ -15,7 +15,7 @@ public partial class IscPost
 
     public int PublishedBy { get; set; }
 
-    public byte[] FrontImage { get; set; } = null!;
+    public string? FrontBannerFile { get; set; }
 
     public virtual IscAccount PublishedByNavigation { get; set; } = null!;
 }
