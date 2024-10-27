@@ -9,11 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Adding Modify Profile Photo endpoint">
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Adding some changes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscPost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscPost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FileService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +46,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Runtime/CompilerServices/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/781ebca67bd71532948352c2c24f8db410449e3c21f7191a17bf21348cd4fed4/SwaggerUIMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Controllers/AccountController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
@@ -137,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729565523060</updated>
       <workItem from="1729565524368" duration="16000" />
-      <workItem from="1729565545397" duration="39312000" />
+      <workItem from="1729565545397" duration="54254000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -155,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729802921534</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adding some changes">
+      <option name="closed" value="true" />
+      <created>1729872964543</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729872964543</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +179,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="First Commit" />
     <MESSAGE value="Adding Modify Profile Photo endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Modify Profile Photo endpoint" />
+    <MESSAGE value="Adding some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding some changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,22 +8,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InterServiceCenter_Core.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("api/account")]
 public class AccountController : ControllerBase
 {
-    public readonly InterServiceCenterContext _dbContext;
-    public readonly AccountService _accountService;
-    public readonly JwtToken _token;
+    private readonly InterServiceCenterContext _dbContext;
+    private readonly AccountService _accountService;
+    private readonly JwtToken _token;
+    private readonly FileService _fileService;
+    
 
-    public AccountController(InterServiceCenterContext dbContext, AccountService accountService, JwtToken token)
+    public AccountController(InterServiceCenterContext dbContext, AccountService accountService, JwtToken token, FileService fileService)
     {
         _dbContext = dbContext;
         _accountService = accountService;
         _token = token;
+        _fileService = fileService;
     }
     
+    [Authorize]
     [HttpGet("")]
     public IActionResult GetAccounts()
     {
@@ -31,6 +34,7 @@ public class AccountController : ControllerBase
         return Ok(accounts);
     }
     
+    [Authorize]
     [HttpGet("{id}")]
     public IActionResult GetAccountById(int id)
     {
@@ -38,6 +42,7 @@ public class AccountController : ControllerBase
         return Ok(account);
     }
 
+    [Authorize]
     [HttpPost("profile-photo")]
     public IActionResult SaveProfilePhoto([FromForm] AddAttachmentDTO attachment)
     {
@@ -47,6 +52,7 @@ public class AccountController : ControllerBase
         return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
     }
     
+    [Authorize]
     [HttpPut("profile-photo")]
     public IActionResult ModifyProfilePhoto([FromForm] AddAttachmentDTO attachment)
     {
@@ -56,7 +62,8 @@ public class AccountController : ControllerBase
         return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
     }
     
-    [HttpDelete("profile-photo/{id}")]
+    [Authorize]
+    [HttpDelete("{id}/profile-photo")]
     public IActionResult RemoveProfilePhoto(int id)
     {
         var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
@@ -65,6 +72,21 @@ public class AccountController : ControllerBase
         return StatusCode(response.StatusCode, new { msg = response.Message });
     }
     
+    [HttpGet("{id}/profile-photo")]
+    public async Task<IActionResult> GetProfilePhoto(int id)
+    {
+        Task<JsonResponse> response = _accountService.GetProfilePhoto(id);
+
+        if (response.Result.StatusCode != 200)
+        {
+            return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
+        }
+
+        var path = _fileService.GetProfilePhotoPath(response.Result.Message);
+        return PhysicalFile(path, "image/jpeg");
+    }
+    
+    [Authorize]
     [HttpPut("")]
     public IActionResult ModifyAccount([FromBody] ModifyAccountDTO account)
     {
@@ -74,6 +96,7 @@ public class AccountController : ControllerBase
         return StatusCode(response.StatusCode, new { msg = response.Message });
     }
     
+    [Authorize]
     [HttpDelete("{id}")]
     [Authorize(Policy = "AdminRole")]
     public IActionResult DeleteAccount(int id)

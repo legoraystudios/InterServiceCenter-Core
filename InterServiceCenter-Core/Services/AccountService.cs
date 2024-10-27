@@ -1,7 +1,9 @@
+using System.Net;
 using InterServiceCenter_Core.Contexts;
 using InterServiceCenter_Core.Models;
 using InterServiceCenter_Core.Utilities;
 using InterServiceCenter_Core.Utilities.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InterServiceCenter_Core.Services;
 
@@ -56,6 +58,23 @@ public class AccountService
         _dbContext.SaveChanges();
         
         return new JsonResponse{ StatusCode = 200, Message = "Profile photo saved successfully!"};
+    }
+
+    public async Task<JsonResponse> GetProfilePhoto(int accountId)
+    {
+        var account = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == accountId);
+
+        if (account == null)
+        {
+            return new JsonResponse{ StatusCode = 404, Message = "ERROR: Account doesn't exist in our records."};
+        }
+
+        if (account.ProfilePhotoFile == null)
+        {
+             return new JsonResponse{ StatusCode = 404, Message = "ERROR: Profile photo doesn't exist in our records."};
+        }
+
+        return new JsonResponse{ StatusCode = 200, Message = account.ProfilePhotoFile};
     }
 
     public async Task<JsonResponse> ModifyProfilePhoto(AddAttachmentDTO account, string loggedEmail)

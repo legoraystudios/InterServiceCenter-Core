@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace InterServiceCenter_Core.Services;
 
 public interface IFileService
@@ -5,8 +7,17 @@ public interface IFileService
 
 }
 
-public class FileService(IWebHostEnvironment environment) : IFileService
+public class FileService : IFileService
 {
+    private readonly IWebHostEnvironment _environment;
+    private readonly IConfiguration _configuration;
+    
+    public FileService(IWebHostEnvironment environment, IConfiguration configuration)
+    {
+        _environment = environment;
+        _configuration = configuration;
+    }
+    
     public async Task<string> SaveProfilePhoto(IFormFile imageFile, string[] allowedFileExtensions)
     {
         if (imageFile == null)
@@ -14,8 +25,8 @@ public class FileService(IWebHostEnvironment environment) : IFileService
             throw new ArgumentNullException(nameof(imageFile));
         }
         
-        var contentPath = environment.ContentRootPath;
-        var path = Path.Combine(contentPath, "Uploads/ProfilePhotos");
+        var contentPath = _environment.ContentRootPath;
+        var path = Path.Combine(contentPath, _configuration["StoragePath:ProfilePhotoPath"]);
         
         if (!Directory.Exists(path))
         {
@@ -36,6 +47,24 @@ public class FileService(IWebHostEnvironment environment) : IFileService
         await imageFile.CopyToAsync(stream);
         return fileName;
     }
+
+    public string GetProfilePhotoPath(string fileNameWithExtension)
+    {
+        if (string.IsNullOrEmpty(fileNameWithExtension))
+        {
+            throw new FileNotFoundException($"Invalid filepath provided");
+        }
+        
+        var contentPath = _environment.ContentRootPath;
+        var path = Path.Combine(contentPath, _configuration["StoragePath:ProfilePhotoPath"], fileNameWithExtension);
+        
+        if (!File.Exists(path))
+        {
+            throw new FileNotFoundException($"Profile photo not found.");
+        }
+
+        return path;
+    }
     
     public async Task<string> ModifyProfilePhoto(IFormFile imageFile, string[] allowedFileExtensions, string existingFileName)
     {
@@ -44,8 +73,8 @@ public class FileService(IWebHostEnvironment environment) : IFileService
             throw new ArgumentNullException(nameof(imageFile));
         }
         
-        var contentPath = environment.ContentRootPath;
-        var path = Path.Combine(contentPath, "Uploads/ProfilePhotos");
+        var contentPath = _environment.ContentRootPath;
+        var path = Path.Combine(contentPath, _configuration["StoragePath:ProfilePhotoPath"]);
         
         if (!Directory.Exists(path))
         {
@@ -77,8 +106,8 @@ public class FileService(IWebHostEnvironment environment) : IFileService
         {
             throw new ArgumentNullException(nameof(fileNameWithExtension));
         }
-        var contentPath = environment.ContentRootPath;
-        var path = Path.Combine(contentPath, $"Uploads/ProfilePhotos", fileNameWithExtension);
+        var contentPath = _environment.ContentRootPath;
+        var path = Path.Combine(contentPath, _configuration["StoragePath:ProfilePhotoPath"], fileNameWithExtension);
 
         if (!File.Exists(path))
         {
@@ -96,8 +125,8 @@ public class FileService(IWebHostEnvironment environment) : IFileService
             throw new ArgumentNullException(nameof(imageFile));
         }
         
-        var contentPath = environment.ContentRootPath;
-        var path = Path.Combine(contentPath, "Uploads/PostBanner");
+        var contentPath = _environment.ContentRootPath;
+        var path = Path.Combine(contentPath, _configuration["StoragePath:FrontBannerPhotoPath"], "Uploads/PostBanner");
         
         if (!Directory.Exists(path))
         {
@@ -125,8 +154,8 @@ public class FileService(IWebHostEnvironment environment) : IFileService
         {
             throw new ArgumentNullException(nameof(fileNameWithExtension));
         }
-        var contentPath = environment.ContentRootPath;
-        var path = Path.Combine(contentPath, $"Uploads/PostBanner", fileNameWithExtension);
+        var contentPath = _environment.ContentRootPath;
+        var path = Path.Combine(contentPath, _configuration["StoragePath:FrontBannerPhotoPath"], fileNameWithExtension);
 
         if (!File.Exists(path))
         {
