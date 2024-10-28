@@ -4,8 +4,7 @@ namespace InterServiceCenter_Core.Models;
 
 public class AddAttachmentDTO
 {
-    [Required]
-    public int Id { get; set; }
-    [Required]
-    public IFormFile? ImageFile { get; set; }
+    [Required] public int Id { get; set; }
+
+    [Required] public IFormFile? ImageFile { get; set; }
 }

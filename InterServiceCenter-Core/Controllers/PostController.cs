@@ -1,10 +1,10 @@
 using InterServiceCenter_Core.Contexts;
 using InterServiceCenter_Core.Models;
 using InterServiceCenter_Core.Services;
-using InterServiceCenter_Core.Utilities;
 using InterServiceCenter_Core.Utilities.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace InterServiceCenter_Core.Controllers;
 
@@ -12,24 +12,26 @@ namespace InterServiceCenter_Core.Controllers;
 [Route("api/post")]
 public class PostController : ControllerBase
 {
-    public readonly PostService _postService;
-    public readonly InterServiceCenterContext _dbContext;
-    public readonly JwtToken _token;
-    
-    public PostController(PostService postService, InterServiceCenterContext dbContext, JwtToken token)
+    private readonly InterServiceCenterContext _dbContext;
+    private readonly PostService _postService;
+    private readonly FileService _fileService;
+    private readonly JwtToken _token;
+
+    public PostController(PostService postService, InterServiceCenterContext dbContext, JwtToken token, FileService fileService)
     {
         _postService = postService;
         _dbContext = dbContext;
+        _fileService = fileService;
         _token = token;
     }
-    
+
     [HttpGet("")]
     public IActionResult GetPosts()
     {
-        List<IscPost> posts = _dbContext.IscPosts.ToList();
+        var posts = _dbContext.IscPosts.ToList();
         return Ok(posts);
     }
-    
+
     [HttpGet("{id}")]
     public IActionResult GetPosts(int id)
     {
@@ -37,22 +39,35 @@ public class PostController : ControllerBase
         return Ok(posts);
     }
     
+    [HttpGet("{id}/banner")]
+    public IActionResult GetFrontBanner(int id)
+    {
+        var response = _postService.GetFrontBanner(id);
+
+        if (response.Result.StatusCode != 200)
+            return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
+
+        var path = _fileService.GetFrontBannerPath(response.Result.Message);
+        return PhysicalFile(path, "image/jpeg");
+    }
+    
     [Authorize]
-    [HttpPost("")]
-    public IActionResult CreatePost([FromBody] IscPost post, [FromForm] IFormFile? frontBanner)
+    [HttpDelete("{id}/banner")]
+    public IActionResult RemoveFrontBanner(int id)
     {
         var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
 
-        var publishedBy = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Email == loggedEmail);
+        var response = _postService.RemoveFrontBanner(id);
+        return StatusCode(response.StatusCode, new { msg = response.Message });
+    }
 
-        if (publishedBy == null)
-        {
-            return StatusCode(404, new { msg = "ERROR: Signed In user doesn't exist in our records." });
-        }
+    [Authorize]
+    [HttpPost("")]
+    public async Task<IActionResult> CreatePost([FromForm] IscPost post, [FromForm] IFormFile? frontBanner)
+    {
+        var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
 
-        post.PublishedByNavigation = publishedBy;
-        
-        Task<JsonResponse> response = _postService.SavePost(post, frontBanner, loggedEmail);
+        var response = _postService.SavePost(post, frontBanner, loggedEmail);
         return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
     }
 }

@@ -13,9 +13,9 @@ public partial class IscPost
 
     public DateTime PublishedAt { get; set; }
 
-    public int PublishedBy { get; set; }
+    public int? PublishedBy { get; set; }
 
     public string? FrontBannerFile { get; set; }
 
-    public virtual IscAccount PublishedByNavigation { get; set; } = null!;
+    public virtual IscAccount? PublishedByNavigation { get; set; }
 }

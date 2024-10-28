@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 using InterServiceCenter_Core.Contexts;
 using InterServiceCenter_Core.Services;
 using InterServiceCenter_Core.Utilities;
@@ -7,7 +8,6 @@ using InterServiceCenter_Core.Utilities.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,13 +20,6 @@ builder.Services.AddControllers();
 
 // Get JWT Settings from appsettings.json
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-
-// Add Database Connection String to DBContext
-builder.Services.AddDbContext<InterServiceCenterContext>(options =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("DefaultDatabaseConnection");
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-});
 
 // Configuring authentication and JWT Bearer
 builder.Services.AddAuthentication(options =>
@@ -44,7 +37,7 @@ builder.Services.AddAuthentication(options =>
             ValidateIssuerSigningKey = true,
             ValidIssuer = jwtSettings["Issuer"],
             ValidAudience = jwtSettings["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"])),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]))
         };
 
         // Custom Validation for the JWT Bearer Token
@@ -59,13 +52,9 @@ builder.Services.AddAuthentication(options =>
                 var verify = tokenService.VerifyBearer(claimsIdentity);
 
                 if (claimsIdentity != null)
-                {
                     if (!verify)
-                    {
                         // If no deviceId is found, invalidate the token immediately
                         context.Fail("Unauthorized - Invalid Token.");
-                    }
-                }
 
                 return Task.CompletedTask;
             }
@@ -94,12 +83,15 @@ builder.Services.AddScoped<JwtToken>();
 builder.Services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
 builder.Services.AddScoped<GeneralUtilities>();
 
+// Add Database Connection String to DBContext
+builder.Services.AddDbContext<InterServiceCenterContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultDatabaseConnection");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
 
 builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-    });
+    .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve; });
 
 var app = builder.Build();
 
@@ -114,9 +106,6 @@ app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 app.UseHttpsRedirection();
 app.Run();

@@ -9,50 +9,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Adding some changes">
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AuthController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/InterServiceCenter-Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/InterServiceCenter-Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/AddAttachmentDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/AddAttachmentDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/DeleteAttachmentDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/DeleteAttachmentDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscPost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscPost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/RegisterDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/RegisterDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AuthService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FileService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/JwtToken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/JwtToken.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleAuthorizationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleAuthorizationHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleRequirement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleRequirement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/GeneralUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/GeneralUtilities.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "legoraystudios"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;legoraystudios&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/legoraystudios/InterServiceCenter-Core.git",
-    "accountId": "83e8f26c-d55b-4607-b3ca-bd391fc4a66a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/legoraystudios/InterServiceCenter-Core.git&quot;,
+    &quot;accountId&quot;: &quot;83e8f26c-d55b-4607-b3ca-bd391fc4a66a&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/954f61dd38b33caa2b736c73530bd5a294174437/src/Security/Authentication/JwtBearer/src/JwtBearerEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/954f61dd38b33caa2b736c73530bd5a294174437/src/Security/Authentication/JwtBearer/src/JwtBearerHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Http/Authentication.Core/src/AuthenticationService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Security/Authentication/Core/src/AuthenticationHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Security/Authentication/Core/src/AuthenticationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Runtime/CompilerServices/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Threading/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Runtime/ExceptionServices/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Threading/Tasks/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/781ebca67bd71532948352c2c24f8db410449e3c21f7191a17bf21348cd4fed4/SwaggerUIMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Controllers/AccountController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -67,7 +84,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Launch Settings Profile.InterServiceCenter-Core: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.InterServiceCenter-Core: http.executor": "Debug",
     ".NET Launch Settings Profile.InterServiceCenter-Core: https.executor": "Run",
+    "ATTACH_DIALOG_SELECTED_HOST": "100.84.133.34@legoncio:22",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
@@ -75,6 +95,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propDebugger",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -141,7 +162,12 @@
       <option name="presentableId" value="Default" />
       <updated>1729565523060</updated>
       <workItem from="1729565524368" duration="16000" />
-      <workItem from="1729565545397" duration="54254000" />
+      <workItem from="1729565545397" duration="61177000" />
+      <workItem from="1730081095871" duration="59000" />
+      <workItem from="1730082300696" duration="269000" />
+      <workItem from="1730082585876" duration="2679000" />
+      <workItem from="1730085564974" duration="981000" />
+      <workItem from="1730089371050" duration="4580000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -167,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729872964543</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added FileService.cs for upload profile photos and post cover photos">
+      <option name="closed" value="true" />
+      <created>1730064400621</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730064400621</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,25 +214,16 @@
     <MESSAGE value="First Commit" />
     <MESSAGE value="Adding Modify Profile Photo endpoint" />
     <MESSAGE value="Adding some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding some changes" />
+    <MESSAGE value="Added FileService.cs for upload profile photos and post cover photos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added FileService.cs for upload profile photos and post cover photos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/JwtToken.cs</url>
-          <line>83</line>
-          <properties documentPath="C:\Users\junin\RiderProjects\InterServiceCenter-Core\InterServiceCenter-Core\Utilities\Authorization\JwtToken.cs" containingFunctionPresentation="Method 'VerifyBearer'">
-            <startOffsets>
-              <option value="3434" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3495" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint" />
+        <breakpoint enabled="true" type="javascript-exception" />
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

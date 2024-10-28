@@ -75,7 +75,6 @@ public partial class InterServiceCenterContext : DbContext
 
             entity.HasOne(d => d.PublishedByNavigation).WithMany(p => p.IscPosts)
                 .HasForeignKey(d => d.PublishedBy)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("isc-posts_ibfk_1");
         });
 
