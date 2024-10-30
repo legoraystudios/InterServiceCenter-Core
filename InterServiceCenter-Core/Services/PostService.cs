@@ -20,7 +20,7 @@ public class PostService
         _fileService = fileService;
     }
 
-    public async Task<JsonResponse> SavePost(IscPost post, IFormFile frontBanner, string loggedEmail)
+    public async Task<JsonResponse> SavePost(IscPost post, IFormFile? frontBanner, string loggedEmail)
     {
         var loggedUser = await _dbContext.IscAccounts.FirstOrDefaultAsync(acct => acct.Email == loggedEmail);
 
@@ -34,7 +34,7 @@ public class PostService
         if (post.Content.Length == 0)
             return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid content." };
 
-        if (!frontBanner.ContentType.IsNullOrEmpty())
+        if (frontBanner != null && !string.IsNullOrEmpty(frontBanner.ContentType))
         {
             if (frontBanner.Length > 10 * 1024 * 1024)
                 return new JsonResponse { StatusCode = 400, Message = "ERROR: File size should not exceed 10 MB's." };
@@ -59,6 +59,55 @@ public class PostService
         await _dbContext.SaveChangesAsync();
 
         return new JsonResponse { StatusCode = 200, Message = "Post created successfully!" };
+    }
+    
+    public async Task<JsonResponse> ModifyPost(IscPost post, IFormFile? frontBanner, string loggedEmail)
+    {
+        var loggedUser = await _dbContext.IscAccounts.FirstOrDefaultAsync(acct => acct.Email == loggedEmail);
+        var existingPost = await _dbContext.IscPosts.FirstOrDefaultAsync(p => p.Id == post.Id);
+        
+        if (loggedUser == null)
+            return new JsonResponse
+                { StatusCode = 400, Message = "ERROR: Signed In user doesn't exist in our records." };
+
+        if (existingPost == null)
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Post not found in our records." };
+        }
+
+        if (post.Title.Length == 0)
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid title." };
+
+        if (post.Content.Length == 0)
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid content." };
+
+        if (frontBanner != null && !string.IsNullOrEmpty(frontBanner.ContentType))
+        {
+            if (frontBanner.Length > 10 * 1024 * 1024)
+                return new JsonResponse { StatusCode = 400, Message = "ERROR: File size should not exceed 10 MB's." };
+
+            string[] allowedFileExtentions = [".jpg", ".jpeg", ".png"];
+
+            if (!existingPost.FrontBannerFile.IsNullOrEmpty())
+            {
+                var createdImageName = await _fileService.ModifyPostBanner(frontBanner, allowedFileExtentions, existingPost.FrontBannerFile);
+                post.FrontBannerFile = createdImageName;
+            }
+            else
+            {
+                var createdImageName = await _fileService.SavePostBanner(frontBanner, allowedFileExtentions);
+                post.FrontBannerFile = createdImageName;
+            }
+        }
+
+        existingPost.Title = post.Title;
+        existingPost.Content = post.Content;
+        existingPost.FrontBannerFile = post.FrontBannerFile;
+
+        _dbContext.IscPosts.Update(existingPost);
+        await _dbContext.SaveChangesAsync();
+
+        return new JsonResponse { StatusCode = 200, Message = "Post modified successfully!" };
     }
     
     public async Task<JsonResponse> GetFrontBanner(int postId)

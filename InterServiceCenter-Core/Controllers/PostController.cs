@@ -70,4 +70,14 @@ public class PostController : ControllerBase
         var response = _postService.SavePost(post, frontBanner, loggedEmail);
         return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
     }
+    
+    [Authorize]
+    [HttpPut("")]
+    public async Task<IActionResult> ModifyPost([FromForm] IscPost post, [FromForm] IFormFile? frontBanner)
+    {
+        var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
+
+        var response = _postService.ModifyPost(post, frontBanner, loggedEmail);
+        return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
+    }
 }
