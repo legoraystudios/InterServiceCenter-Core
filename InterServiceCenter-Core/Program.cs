@@ -68,7 +68,11 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminRole", policy =>
     {
         // Adding Role Policy
+
+        //policy.RequireRole("Admin");
+        
         policy.Requirements.Add(new RoleRequirement("Admin"));
+        //policy.Requirements.Add(new RoleRequirement("Super Administrator"));
     });
 });
 
@@ -79,6 +83,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<PostService>();
 builder.Services.AddScoped<FileService>();
+builder.Services.AddScoped<StatusBarService>();
 builder.Services.AddScoped<JwtToken>();
 builder.Services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
 builder.Services.AddScoped<GeneralUtilities>();
@@ -93,6 +98,8 @@ builder.Services.AddDbContext<InterServiceCenterContext>(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve; });
 
+var urlBasePath = builder.Configuration["UrlBasePath"];
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -103,7 +110,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthentication();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+app.UsePathBase(urlBasePath);
 app.UseRouting();
 app.UseAuthorization();
 app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

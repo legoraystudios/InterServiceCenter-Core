@@ -3,6 +3,7 @@ using InterServiceCenter_Core.Models;
 using InterServiceCenter_Core.Services;
 using InterServiceCenter_Core.Utilities.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterServiceCenter_Core.Controllers;
@@ -25,20 +26,77 @@ public class AccountController : ControllerBase
         _token = token;
         _fileService = fileService;
     }
-
-    [Authorize]
+    
     [HttpGet("")]
+    [Authorize(Policy = "AdminRole")]
     public IActionResult GetAccounts()
     {
-        var accounts = _dbContext.IscAccounts.ToList();
+        var accounts = _dbContext.IscAccounts.Select(p => new
+            {
+                p.Id,
+                p.FirstName,
+                p.LastName,
+                p.Email,
+                p.Role,
+                p.ProfilePhotoFile,
+                p.CreatedAt,
+                Posts = p.IscPosts.Select(p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.Content,
+                    p.PublishedAt,
+                    p.PublishedBy,
+                    p.FrontBannerFile
+                })
+                
+            })
+            .ToList();
+        
         return Ok(accounts);
     }
 
     [Authorize]
     [HttpGet("{id}")]
+    [Authorize(Policy = "AdminRole")]
     public IActionResult GetAccountById(int id)
     {
-        var account = _dbContext.IscAccounts.FindAsync(id);
+        var account = _dbContext.IscAccounts.Where(p => p.Id == id).Select(p => new
+        {
+            p.Id,
+            p.FirstName,
+            p.LastName,
+            p.Email,
+            p.Role,
+            p.ProfilePhotoFile,
+            p.CreatedAt,
+            Posts = p.IscPosts.Select(p => new
+            {
+                p.Id,
+                p.Title,
+                p.Content,
+                p.PublishedAt,
+                p.PublishedBy,
+                p.FrontBannerFile
+            })
+
+        }).FirstOrDefault();
+        
+        return Ok(account);
+    }
+    
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<IActionResult> GetLoggedAccountInfo()
+    {
+        var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
+        var account = await _accountService.GetLoggedAccountInfo(loggedEmail);
+
+        if (account == null)
+        {
+            return NotFound(new { msg = "ERROR: Account doesn't exist in our records." });
+        }
+
         return Ok(account);
     }
 

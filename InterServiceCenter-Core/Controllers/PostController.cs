@@ -28,14 +28,35 @@ public class PostController : ControllerBase
     [HttpGet("")]
     public IActionResult GetPosts()
     {
-        var posts = _dbContext.IscPosts.ToList();
+        var posts = _dbContext.IscPosts.Select(p => new
+            {
+                p.Id,
+                p.Title,
+                p.Content,
+                p.PublishedAt,
+                p.PublishedBy,
+                p.FrontBannerFile,
+                AuthorName = p.PublishedByNavigation.FirstName + " " + p.PublishedByNavigation.LastName
+            })
+            .ToList();
         return Ok(posts);
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetPosts(int id)
+    public IActionResult GetPostsById(int id)
     {
-        var posts = _dbContext.IscPosts.FindAsync(id);
+        var posts = _dbContext.IscPosts.Where(p => p.Id == id).Select(p => new
+            {
+                p.Id,
+                p.Title,
+                p.Content,
+                p.PublishedAt,
+                p.PublishedBy,
+                p.FrontBannerFile,
+                AuthorName = p.PublishedByNavigation.FirstName + " " + p.PublishedByNavigation.LastName
+            })
+            .FirstOrDefault();
+        
         return Ok(posts);
     }
     
@@ -79,5 +100,13 @@ public class PostController : ControllerBase
 
         var response = _postService.ModifyPost(post, frontBanner, loggedEmail);
         return StatusCode(response.Result.StatusCode, new { msg = response.Result.Message });
+    }
+    
+    [Authorize]
+    [HttpDelete("{id}")]
+    public IActionResult DeletePost(int id)
+    {
+        var response = _postService.DeletePost(id);
+        return StatusCode(response.StatusCode, new { msg = response.Message });
     }
 }

@@ -2,6 +2,7 @@ using InterServiceCenter_Core.Contexts;
 using InterServiceCenter_Core.Models;
 using InterServiceCenter_Core.Utilities;
 using InterServiceCenter_Core.Utilities.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace InterServiceCenter_Core.Services;
 
@@ -15,6 +16,16 @@ public class AccountService
     {
         _dbContext = dbContext;
         _fileService = fileService;
+    }
+
+    public async Task<IscAccount> GetLoggedAccountInfo(string loggedEmail)
+    {
+        var response = await _dbContext.IscAccounts.FirstOrDefaultAsync(acct => acct.Email == loggedEmail);
+
+        if (response == null)
+            return null;
+
+        return response;
     }
 
     public async Task<JsonResponse> SaveProfilePhoto(AddAttachmentDTO account, string loggedEmail)
@@ -171,7 +182,7 @@ public class AccountService
         if (accountToDelete == null)
             return new JsonResponse { StatusCode = 404, Message = "ERROR: Employee doesn't exist in our records." };
 
-        if (checkLoggedAccount?.Role != "Admin")
+        if (checkLoggedAccount?.Role != "Admin" && checkLoggedAccount?.Role != "Super Administrator")
             return new JsonResponse
                 { StatusCode = 401, Message = "ERROR: You don't have permissions to perform this action." };
 

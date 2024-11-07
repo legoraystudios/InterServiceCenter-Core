@@ -9,11 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Added and Fixed the upload option for the Front Banner on the posts.">
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Fixing System.NullReferenceException when posting a Post without a banner.&#10;&#10;Adding ModifyPost() on PostService.cs to modify an existing post.">
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbarcolor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbaricon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbarmessage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbarproperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/StatusBarService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FileService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscAccount.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +55,7 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Http/Authentication.Core/src/AuthenticationService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Security/Authentication/Core/src/AuthenticationHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Security/Authentication/Core/src/AuthenticationMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/da7e9894ce22ef8cc02e5acc56e95a6f8cf8f644/src/Security/Authorization/Core/src/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Runtime/CompilerServices/RuntimeHelpers.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/coreclr/System.Private.CoreLib/src/System/Threading/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Runtime/ExceptionServices/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -51,6 +63,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/781ebca67bd71532948352c2c24f8db410449e3c21f7191a17bf21348cd4fed4/SwaggerUIMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Controllers/AccountController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Services/FileService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -71,9 +84,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.InterServiceCenter-Core: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.InterServiceCenter-Core: http.executor": "Debug",
-    ".NET Launch Settings Profile.InterServiceCenter-Core: https.executor": "Debug",
+    ".NET Launch Settings Profile.InterServiceCenter-Core: http.executor": "Run",
+    ".NET Launch Settings Profile.InterServiceCenter-Core: https.executor": "Run",
     "ATTACH_DIALOG_SELECTED_HOST": "100.84.133.34@legoncio:22",
+    "Publish to folder.Build.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "XThreadsFramesViewSplitterKey": "0.6772152",
     "git-widget-placeholder": "master",
@@ -82,7 +96,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propDebugger",
+    "settings.editor.selected.configurable": "dotNetConsole",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -94,6 +108,10 @@
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.InterServiceCenter-Core: https">
+    <configuration name="Build" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/InterServiceCenter-Core/bin/Release/net8.0/publish" target_framework="net8.0" uuid_high="-1131696585459547567" uuid_low="-6109959975356583707" />
+      <method v="2" />
+    </configuration>
     <configuration name="InterServiceCenter-Core: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/InterServiceCenter-Core/InterServiceCenter-Core.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -139,6 +157,12 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.InterServiceCenter-Core: http" />
+      <item itemvalue=".NET Launch Settings Profile.InterServiceCenter-Core: https" />
+      <item itemvalue=".NET Launch Settings Profile.InterServiceCenter-Core: IIS Express" />
+      <item itemvalue="Publish to folder.Build" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -154,7 +178,7 @@
       <workItem from="1730082300696" duration="269000" />
       <workItem from="1730082585876" duration="2679000" />
       <workItem from="1730085564974" duration="981000" />
-      <workItem from="1730089371050" duration="8165000" />
+      <workItem from="1730089371050" duration="48852000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -196,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730133770238</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixing System.NullReferenceException when posting a Post without a banner.&#10;&#10;Adding ModifyPost() on PostService.cs to modify an existing post.">
+      <option name="closed" value="true" />
+      <created>1730250916555</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730250916555</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +243,8 @@
     <MESSAGE value="Adding some changes" />
     <MESSAGE value="Added FileService.cs for upload profile photos and post cover photos" />
     <MESSAGE value="Added and Fixed the upload option for the Front Banner on the posts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added and Fixed the upload option for the Front Banner on the posts." />
+    <MESSAGE value="Fixing System.NullReferenceException when posting a Post without a banner.&#10;&#10;Adding ModifyPost() on PostService.cs to modify an existing post." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing System.NullReferenceException when posting a Post without a banner.&#10;&#10;Adding ModifyPost() on PostService.cs to modify an existing post." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -109,6 +109,26 @@ public class PostService
 
         return new JsonResponse { StatusCode = 200, Message = "Post modified successfully!" };
     }
+
+    public JsonResponse DeletePost(int postId)
+    {
+        var postToDelete = _dbContext.IscPosts.FirstOrDefault(p => p.Id == postId);
+
+        if (postToDelete == null)
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Post not found in our records." };
+        }
+
+        if (postToDelete.FrontBannerFile != null)
+        {
+            _fileService.DeleteFrontBanner(postToDelete.FrontBannerFile);
+        }
+
+        _dbContext.IscPosts.Remove(postToDelete);
+        _dbContext.SaveChanges();
+        
+        return new JsonResponse { StatusCode = 200, Message = "Post deleted successfully!" };
+    }
     
     public async Task<JsonResponse> GetFrontBanner(int postId)
     {
