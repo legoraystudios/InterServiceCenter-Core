@@ -18,16 +18,6 @@ public class AccountService
         _fileService = fileService;
     }
 
-    public async Task<IscAccount> GetLoggedAccountInfo(string loggedEmail)
-    {
-        var response = await _dbContext.IscAccounts.FirstOrDefaultAsync(acct => acct.Email == loggedEmail);
-
-        if (response == null)
-            return null;
-
-        return response;
-    }
-
     public async Task<JsonResponse> SaveProfilePhoto(AddAttachmentDTO account, string loggedEmail)
     {
         var checkIfAccountExist = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == account.Id);

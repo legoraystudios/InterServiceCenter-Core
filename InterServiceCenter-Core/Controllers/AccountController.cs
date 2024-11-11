@@ -90,7 +90,26 @@ public class AccountController : ControllerBase
     public async Task<IActionResult> GetLoggedAccountInfo()
     {
         var loggedEmail = _token.GetLoggedEmail(HttpContext.User);
-        var account = await _accountService.GetLoggedAccountInfo(loggedEmail);
+        var account = _dbContext.IscAccounts.Where(p => p.Email == loggedEmail).Select(p => new
+        {
+            p.Id,
+            p.FirstName,
+            p.LastName,
+            p.Email,
+            p.Role,
+            p.ProfilePhotoFile,
+            p.CreatedAt,
+            Posts = p.IscPosts.Select(p => new
+            {
+                p.Id,
+                p.Title,
+                p.Content,
+                p.PublishedAt,
+                p.PublishedBy,
+                p.FrontBannerFile
+            })
+
+        }).FirstOrDefault();
 
         if (account == null)
         {

@@ -98,6 +98,17 @@ builder.Services.AddDbContext<InterServiceCenterContext>(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve; });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 var urlBasePath = builder.Configuration["UrlBasePath"];
 
 var app = builder.Build();
@@ -109,6 +120,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowAll");
 app.UseAuthentication();
 //app.UseHttpsRedirection();
 app.UsePathBase(urlBasePath);
