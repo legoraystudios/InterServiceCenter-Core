@@ -30,7 +30,6 @@ public class StatusBarController : ControllerBase
         return StatusCode(response.StatusCode, new { msg = response.Message });
     }
     
-    [Authorize]
     [HttpGet("property")]
     public IActionResult GetStatusBarProperties()
     {
@@ -53,9 +52,48 @@ public class StatusBarController : ControllerBase
                 p.ModifiedAt,
                 p.ExpiresIn,
                 CreatedByName = p.CreatedByNavigation.FirstName + " " + p.CreatedByNavigation.LastName,
-                ModifiedByName = p.ModifiedByNavigation.FirstName + " " + p.ModifiedByNavigation.LastName
+                ModifiedByName = p.ModifiedByNavigation.FirstName + " " + p.ModifiedByNavigation.LastName,
+                p.IconNavigation.IconName,
             })
             .ToList();
+        
+        return Ok(response);
+    }
+    
+    [HttpGet("public/messages")]
+    public IActionResult GetPublicStatusBarMessages()
+    {
+        var response = _dbContext.IscStatusbarmessages.Select(p => new
+            {
+                p.Id,
+                p.Message,
+                p.Icon,
+                p.IconNavigation.IconName,
+            })
+            .ToList();
+        
+        return Ok(response);
+    }
+    
+    [Authorize]
+    [HttpGet("messages/{id}")]
+    public IActionResult GetStatusBarMessagesById(int id)
+    {
+        var response = _dbContext.IscStatusbarmessages.Where(p => p.Id == id).Select(p => new
+            {
+                p.Id,
+                p.Message,
+                p.Icon,
+                p.CreatedBy,
+                p.ModifiedBy,
+                p.CreatedAt,
+                p.ModifiedAt,
+                p.ExpiresIn,
+                CreatedByName = p.CreatedByNavigation.FirstName + " " + p.CreatedByNavigation.LastName,
+                ModifiedByName = p.ModifiedByNavigation.FirstName + " " + p.ModifiedByNavigation.LastName,
+                p.IconNavigation.IconName,
+            })
+            .FirstOrDefault();
         
         return Ok(response);
     }

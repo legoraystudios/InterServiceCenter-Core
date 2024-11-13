@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Fixing security issues with HTTP Endpoints.">
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Fixing some security issues">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/InterServiceCenter-Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/InterServiceCenter-Core.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +167,7 @@
       <workItem from="1730082300696" duration="269000" />
       <workItem from="1730082585876" duration="2679000" />
       <workItem from="1730085564974" duration="981000" />
-      <workItem from="1730089371050" duration="55136000" />
+      <workItem from="1730089371050" duration="61541000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -226,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731011995074</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixing some security issues">
+      <option name="closed" value="true" />
+      <created>1731333303470</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731333303470</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +250,8 @@
     <MESSAGE value="Added and Fixed the upload option for the Front Banner on the posts." />
     <MESSAGE value="Fixing System.NullReferenceException when posting a Post without a banner.&#10;&#10;Adding ModifyPost() on PostService.cs to modify an existing post." />
     <MESSAGE value="Fixing security issues with HTTP Endpoints." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing security issues with HTTP Endpoints." />
+    <MESSAGE value="Fixing some security issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing some security issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
