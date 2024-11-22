@@ -9,11 +9,7 @@ public partial class IscStatusbarproperty
 
     public double MessageInterval { get; set; }
 
-    public int StatusBarColor { get; set; }
+    public int? StatusBarColor { get; set; }
 
-    public int StatusBarIcon { get; set; }
-
-    public virtual IscStatusbarcolor StatusBarColorNavigation { get; set; } = null!;
-
-    public virtual IscStatusbaricon StatusBarIconNavigation { get; set; } = null!;
+    public virtual IscStatusbarcolor? StatusBarColorNavigation { get; set; }
 }

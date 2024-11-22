@@ -100,6 +100,12 @@ public class PostService
             }
         }
 
+        if (frontBanner == null &&
+            existingPost.FrontBannerFile != null)
+        {
+            post.FrontBannerFile = existingPost.FrontBannerFile;
+        }
+
         existingPost.Title = post.Title;
         existingPost.Content = post.Content;
         existingPost.FrontBannerFile = post.FrontBannerFile;

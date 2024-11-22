@@ -26,20 +26,55 @@ public class PostController : ControllerBase
     }
 
     [HttpGet("")]
-    public IActionResult GetPosts()
+    public async Task<ActionResult<PagedResponse<IscPost>>> GetPosts([FromQuery] int page = 0, [FromQuery] int pageSize = 0)
     {
-        var posts = _dbContext.IscPosts.Select(p => new
+        if (page == 0 && pageSize == 0)
+        {
+            // Fetch all posts without pagination
+            var posts = await _dbContext.IscPosts.OrderByDescending(p => p.PublishedAt)
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.Content,
+                    p.PublishedAt,
+                    p.PublishedBy,
+                    p.FrontBannerFile,
+                    AuthorName = p.PublishedByNavigation.FirstName + " " + p.PublishedByNavigation.LastName
+                })
+                .ToListAsync();
+
+            return Ok(posts);
+        }
+        else
+        {
+            var totalItems = await _dbContext.IscPosts.CountAsync();
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+        
+            var posts = await _dbContext.IscPosts.OrderByDescending(p => p.PublishedAt).Select(p => new
+                {
+                    p.Id,
+                    p.Title,
+                    p.Content,
+                    p.PublishedAt,
+                    p.PublishedBy,
+                    p.FrontBannerFile,
+                    AuthorName = p.PublishedByNavigation.FirstName + " " + p.PublishedByNavigation.LastName
+                })
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize).ToListAsync();
+        
+            var response = new PagedResponse<object>
             {
-                p.Id,
-                p.Title,
-                p.Content,
-                p.PublishedAt,
-                p.PublishedBy,
-                p.FrontBannerFile,
-                AuthorName = p.PublishedByNavigation.FirstName + " " + p.PublishedByNavigation.LastName
-            })
-            .ToList();
-        return Ok(posts);
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalCount = totalItems,
+                TotalPages = totalPages,
+                Items = posts
+            };
+        
+            return Ok(response);
+        }
     }
 
     [HttpGet("{id}")]

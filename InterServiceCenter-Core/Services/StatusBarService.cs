@@ -28,7 +28,6 @@ public class StatusBarService
 
             existingProperty.MessageInterval = property.MessageInterval;
             existingProperty.StatusBarColor = property.StatusBarColor;
-            existingProperty.StatusBarIcon = property.StatusBarIcon;
 
             _dbContext.IscStatusbarproperties.Update(existingProperty);
             _dbContext.SaveChanges();
@@ -40,7 +39,6 @@ public class StatusBarService
         {
             MessageInterval = property.MessageInterval,
             StatusBarColor = property.StatusBarColor,
-            StatusBarIcon = property.StatusBarIcon,
         };
 
         _dbContext.IscStatusbarproperties.Update(newProperty);

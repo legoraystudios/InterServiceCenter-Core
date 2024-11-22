@@ -30,7 +30,7 @@ public partial class InterServiceCenterContext : DbContext
     public virtual DbSet<IscStatusbarmessage> IscStatusbarmessages { get; set; }
 
     public virtual DbSet<IscStatusbarproperty> IscStatusbarproperties { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -150,21 +150,12 @@ public partial class InterServiceCenterContext : DbContext
 
             entity.HasIndex(e => e.StatusBarColor, "StatusBarColor");
 
-            entity.HasIndex(e => e.StatusBarIcon, "StatusBarIcon");
-
             entity.Property(e => e.Id).HasColumnType("int(11)");
             entity.Property(e => e.StatusBarColor).HasColumnType("int(255)");
-            entity.Property(e => e.StatusBarIcon).HasColumnType("int(11)");
 
             entity.HasOne(d => d.StatusBarColorNavigation).WithMany(p => p.IscStatusbarproperties)
                 .HasForeignKey(d => d.StatusBarColor)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("isc-statusbarproperties_ibfk_2");
-
-            entity.HasOne(d => d.StatusBarIconNavigation).WithMany(p => p.IscStatusbarproperties)
-                .HasForeignKey(d => d.StatusBarIcon)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("isc-statusbarproperties_ibfk_1");
         });
 
         OnModelCreatingPartial(modelBuilder);

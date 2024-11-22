@@ -10,6 +10,4 @@ public partial class IscStatusbaricon
     public string IconName { get; set; } = null!;
 
     public virtual ICollection<IscStatusbarmessage> IscStatusbarmessages { get; set; } = new List<IscStatusbarmessage>();
-
-    public virtual ICollection<IscStatusbarproperty> IscStatusbarproperties { get; set; } = new List<IscStatusbarproperty>();
 }
