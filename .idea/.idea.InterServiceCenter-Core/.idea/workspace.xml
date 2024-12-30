@@ -9,15 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Fixing some security issues">
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/PagedResponse.cs" afterDir="false" />
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/MetricController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/MetricService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbaricon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbaricon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbarproperty.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscStatusbarproperty.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/PostService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/StatusBarService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/StatusBarService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleAuthorizationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleAuthorizationHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleRequirement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleRequirement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/JsonResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/JsonResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +102,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.InterServiceCenter-Core: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.InterServiceCenter-Core: https">
     <configuration name="Build" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/InterServiceCenter-Core/bin/Release/net8.0/publish" target_framework="net8.0" uuid_high="-1131696585459547567" uuid_low="-6109959975356583707" />
       <method v="2" />
@@ -174,7 +174,11 @@
       <workItem from="1730082585876" duration="2679000" />
       <workItem from="1730085564974" duration="981000" />
       <workItem from="1730089371050" duration="61541000" />
-      <workItem from="1732073889636" duration="9780000" />
+      <workItem from="1732073889636" duration="22804000" />
+      <workItem from="1734642666993" duration="6646000" />
+      <workItem from="1735493720310" duration="2000" />
+      <workItem from="1735493871791" duration="41000" />
+      <workItem from="1735507332837" duration="18599000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -240,7 +244,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731333303470</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adding some changes.">
+      <option name="closed" value="true" />
+      <created>1732289003431</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732289003431</updated>
+    </task>
+    <task id="LOCAL-00010" summary=".">
+      <option name="closed" value="true" />
+      <created>1732695326618</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732695326618</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +278,9 @@
     <MESSAGE value="Fixing System.NullReferenceException when posting a Post without a banner.&#10;&#10;Adding ModifyPost() on PostService.cs to modify an existing post." />
     <MESSAGE value="Fixing security issues with HTTP Endpoints." />
     <MESSAGE value="Fixing some security issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing some security issues" />
+    <MESSAGE value="Adding some changes." />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

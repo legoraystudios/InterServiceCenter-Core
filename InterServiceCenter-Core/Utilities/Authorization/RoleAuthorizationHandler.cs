@@ -20,9 +20,18 @@ public class RoleAuthorizationHandler : AuthorizationHandler<RoleRequirement>
         try
         {
             var claimsIdentity = context.User.Identity as ClaimsIdentity;
-            var role = _token.GetLoggedRole(claimsIdentity);
+            var userRole = _token.GetLoggedRole(claimsIdentity);
+            
+            bool hasAllRoles = false;
+            foreach (var role in requirement.Roles)
+            {
+                if (userRole == role)
+                {
+                    hasAllRoles = true;
+                }
+            }
 
-            if (role == requirement.Role)
+            if (hasAllRoles)
                 context.Succeed(requirement);
             else
                 context.Fail(new AuthorizationFailureReason(this, "User does not have the required role."));

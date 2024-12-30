@@ -71,7 +71,7 @@ builder.Services.AddAuthorization(options =>
 
         //policy.RequireRole("Admin");
         
-        policy.Requirements.Add(new RoleRequirement("Admin"));
+        policy.Requirements.Add(new RoleRequirement("Admin", "Super Administrator"));
         //policy.Requirements.Add(new RoleRequirement("Super Administrator"));
     });
 });
@@ -84,6 +84,7 @@ builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<PostService>();
 builder.Services.AddScoped<FileService>();
 builder.Services.AddScoped<StatusBarService>();
+builder.Services.AddScoped<MetricService>();
 builder.Services.AddScoped<JwtToken>();
 builder.Services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
 builder.Services.AddScoped<GeneralUtilities>();

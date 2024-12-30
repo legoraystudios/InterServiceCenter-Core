@@ -4,10 +4,10 @@ namespace InterServiceCenter_Core.Utilities.Authorization;
 
 public class RoleRequirement : IAuthorizationRequirement
 {
-    public RoleRequirement(string role)
+    public string[] Roles { get; }
+    
+    public RoleRequirement(params string[] roles)
     {
-        Role = role;
+        Roles = roles;
     }
-
-    public string Role { get; set; }
 }

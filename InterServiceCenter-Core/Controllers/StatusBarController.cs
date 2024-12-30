@@ -33,7 +33,15 @@ public class StatusBarController : ControllerBase
     [HttpGet("property")]
     public IActionResult GetStatusBarProperties()
     {
-        var response = _dbContext.IscStatusbarproperties.ToList();
+        var response = _dbContext.IscStatusbarproperties.Select(p => new
+            {
+                p.Id,
+                p.MessageInterval,
+                p.StatusBarColor,
+                StatusBarColorName = p.StatusBarColorNavigation.ColorName,
+            })
+            .ToList();
+        
         return Ok(response);
     }
     
