@@ -32,7 +32,7 @@ public class MetricService
                 Count = g.Count()
             })
             .OrderBy(g => g.Year)
-            .ThenByDescending(g => g.Month)
+            .ThenBy(g => g.Month)
             .ToListAsync();
         
         // Get post count of the Last 12-24 rolling months (i.e. October 2023 - October 2022)
@@ -61,7 +61,7 @@ public class MetricService
         for (var i = firstMonth; i > 0; i--)
         {
             var currentMonth = monthlyCountsTY.FirstOrDefault(p => p.Month == i);
-            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(i);
 
             if (currentMonth == null)
             {
@@ -81,7 +81,7 @@ public class MetricService
             {
                 var monthToSearch = i + 12 - monthsLeft;
                 var currentMonth = monthlyCountsTY.FirstOrDefault(p => p.Month == monthToSearch);
-                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthToSearch);
+                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(monthToSearch);
                 var previousYear = DateTime.Now.Year - 1;
 
                 if (currentMonth != null && currentMonth.Year == previousYear)
@@ -102,7 +102,7 @@ public class MetricService
         for (var i = firstMonth; i > 0; i--)
         {
             var currentMonth = monthlyCountsLY.FirstOrDefault(p => p.Month == i);
-            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(i);
             var previousYear = DateTime.Now.Year - 1;
 
             if (currentMonth == null)
@@ -123,7 +123,7 @@ public class MetricService
             {
                 var monthToSearch = i + 12 - monthsLeft;
                 var currentMonth = monthlyCountsLY.FirstOrDefault(p => p.Month == monthToSearch);
-                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthToSearch);
+                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(monthToSearch);
                 var previousYear = DateTime.Now.Year - 2;
 
                 if (currentMonth != null && currentMonth.Year == previousYear)

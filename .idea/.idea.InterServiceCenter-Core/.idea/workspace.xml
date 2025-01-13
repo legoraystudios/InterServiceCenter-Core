@@ -9,16 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/MetricController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/MetricService.cs" afterDir="false" />
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Adding MetricController.cs and MetricService.cs to add post metrics to the frontend">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleAuthorizationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleAuthorizationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleRequirement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/Authorization/RoleRequirement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/JsonResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Utilities/JsonResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/MetricService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/MetricService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +171,8 @@
       <workItem from="1734642666993" duration="6646000" />
       <workItem from="1735493720310" duration="2000" />
       <workItem from="1735493871791" duration="41000" />
-      <workItem from="1735507332837" duration="18599000" />
+      <workItem from="1735507332837" duration="20315000" />
+      <workItem from="1736722534614" duration="2616000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -260,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732695326618</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Adding MetricController.cs and MetricService.cs to add post metrics to the frontend">
+      <option name="closed" value="true" />
+      <created>1735541189980</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1735541189980</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +282,8 @@
     <MESSAGE value="Fixing some security issues" />
     <MESSAGE value="Adding some changes." />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Adding MetricController.cs and MetricService.cs to add post metrics to the frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding MetricController.cs and MetricService.cs to add post metrics to the frontend" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
