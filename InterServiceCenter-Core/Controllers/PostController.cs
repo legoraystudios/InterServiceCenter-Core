@@ -28,6 +28,7 @@ public class PostController : ControllerBase
     [HttpGet("")]
     public async Task<ActionResult<PagedResponse<IscPost>>> GetPosts([FromQuery] int page = 0, [FromQuery] int pageSize = 0)
     {
+        
         if (page == 0 && pageSize == 0)
         {
             // Fetch all posts without pagination
@@ -48,6 +49,11 @@ public class PostController : ControllerBase
         }
         else
         {
+            if (page == 0 && pageSize > 0)
+            {
+                return BadRequest("Invalid Page Number");
+            }
+            
             var totalItems = await _dbContext.IscPosts.CountAsync();
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
         

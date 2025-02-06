@@ -4,6 +4,7 @@ using InterServiceCenter_Core.Services;
 using InterServiceCenter_Core.Utilities.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace InterServiceCenter_Core.Controllers;
 
@@ -47,25 +48,69 @@ public class StatusBarController : ControllerBase
     
     [Authorize]
     [HttpGet("messages")]
-    public IActionResult GetStatusBarMessages()
+    public async Task<ActionResult<PagedResponse<IscStatusbarmessage>>> GetStatusBarMessages([FromQuery] int page = 0, [FromQuery] int pageSize = 0)
     {
-        var response = _dbContext.IscStatusbarmessages.Select(p => new
-            {
-                p.Id,
-                p.Message,
-                p.Icon,
-                p.CreatedBy,
-                p.ModifiedBy,
-                p.CreatedAt,
-                p.ModifiedAt,
-                p.ExpiresIn,
-                CreatedByName = p.CreatedByNavigation.FirstName + " " + p.CreatedByNavigation.LastName,
-                ModifiedByName = p.ModifiedByNavigation.FirstName + " " + p.ModifiedByNavigation.LastName,
-                p.IconNavigation.IconName,
-            })
-            .ToList();
         
-        return Ok(response);
+        if (page == 0 && pageSize == 0)
+        {
+            // Fetch all posts without pagination
+            var message = await _dbContext.IscStatusbarmessages.OrderByDescending(p => p.CreatedAt)
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Message,
+                    p.Icon,
+                    p.CreatedBy,
+                    p.ModifiedBy,
+                    p.CreatedAt,
+                    p.ModifiedAt,
+                    p.ExpiresIn,
+                    p.IconNavigation.IconName,
+                    CreatedByName = p.CreatedByNavigation.FirstName + " " + p.CreatedByNavigation.LastName,
+                    ModifiedByName = p.ModifiedByNavigation.FirstName + " " + p.ModifiedByNavigation.LastName
+                })
+                .ToListAsync();
+
+            return Ok(message);
+        }
+        else
+        {
+            if (page == 0 && pageSize > 0)
+            {
+                return BadRequest("Invalid Page Number");
+            }
+            
+            var totalItems = await _dbContext.IscPosts.CountAsync();
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            var posts = await _dbContext.IscStatusbarmessages.OrderByDescending(p => p.CreatedAt).Select(p => new
+                {
+                    p.Id,
+                    p.Message,
+                    p.Icon,
+                    p.CreatedBy,
+                    p.ModifiedBy,
+                    p.CreatedAt,
+                    p.ModifiedAt,
+                    p.ExpiresIn,
+                    p.IconNavigation.IconName,
+                    CreatedByName = p.CreatedByNavigation.FirstName + " " + p.CreatedByNavigation.LastName,
+                    ModifiedByName = p.ModifiedByNavigation.FirstName + " " + p.ModifiedByNavigation.LastName
+                })
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize).ToListAsync();
+
+            var response = new PagedResponse<object>
+            {
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalCount = totalItems,
+                TotalPages = totalPages,
+                Items = posts
+            };
+
+            return Ok(response);
+        }
     }
     
     [HttpGet("public/messages")]

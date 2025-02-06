@@ -85,6 +85,8 @@ builder.Services.AddScoped<PostService>();
 builder.Services.AddScoped<FileService>();
 builder.Services.AddScoped<StatusBarService>();
 builder.Services.AddScoped<MetricService>();
+builder.Services.AddScoped<FacilityService>();
+builder.Services.AddScoped<DirectoryService>();
 builder.Services.AddScoped<JwtToken>();
 builder.Services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
 builder.Services.AddScoped<GeneralUtilities>();
