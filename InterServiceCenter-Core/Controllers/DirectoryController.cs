@@ -39,8 +39,32 @@ public class DirectoryController : ControllerBase
                     p.FacilityPhoneNumber.PhoneNumber,
                     p.PhoneExtension,
                     p.FacilityId,
-                    p.Facility,
-                    p.IscDirectorypeople
+                    Facility = new
+                    {
+                        p.Facility.Id,
+                        p.Facility.FacilityName,
+                        p.Facility.AddressLineOne,
+                        p.Facility.AddressLineTwo,
+                        p.Facility.City,
+                        p.Facility.State,
+                        StateName = p.Facility.StateNavigation.Name,
+                        StateCode = p.Facility.StateNavigation.Code,
+                        p.Facility.ZipCode
+                    },
+                    People = p.IscDirectorypeople.Select(p => new
+                    {
+                        p.Id,
+                        p.FirstName,
+                        p.LastName,
+                        p.JobPosition,
+                        p.FacilityPhoneNumberId,
+                        p.FacilityPhoneNumber.PhoneNumber,
+                        p.PhoneExtension,
+                        CorporateCellphone = p.CorporateCellphone ?? "",
+                        p.Email,
+                        p.DirectoryDepartmentId,
+                        p.DirectoryDepartment.DepartmentName
+                    })
                 })
                 .ToListAsync();
 
@@ -66,8 +90,32 @@ public class DirectoryController : ControllerBase
                     p.FacilityPhoneNumber.PhoneNumber,
                     p.PhoneExtension,
                     p.FacilityId,
-                    p.Facility,
-                    p.IscDirectorypeople
+                    Facility = new
+                    {
+                        p.Facility.Id,
+                        p.Facility.FacilityName,
+                        p.Facility.AddressLineOne,
+                        p.Facility.AddressLineTwo,
+                        p.Facility.City,
+                        p.Facility.State,
+                        StateName = p.Facility.StateNavigation.Name,
+                        StateCode = p.Facility.StateNavigation.Code,
+                        p.Facility.ZipCode
+                    },
+                    People = p.IscDirectorypeople.Select(p => new
+                    {
+                        p.Id,
+                        p.FirstName,
+                        p.LastName,
+                        p.JobPosition,
+                        p.FacilityPhoneNumberId,
+                        p.FacilityPhoneNumber.PhoneNumber,
+                        p.PhoneExtension,
+                        CorporateCellphone = p.CorporateCellphone ?? "",
+                        p.Email,
+                        p.DirectoryDepartmentId,
+                        p.DirectoryDepartment.DepartmentName
+                    })
                 })
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize).ToListAsync();
@@ -98,8 +146,32 @@ public class DirectoryController : ControllerBase
                 p.FacilityPhoneNumber.PhoneNumber,
                 p.PhoneExtension,
                 p.FacilityId,
-                p.Facility,
-                p.IscDirectorypeople
+                Facility = new
+                {
+                    p.Facility.Id,
+                    p.Facility.FacilityName,
+                    p.Facility.AddressLineOne,
+                    p.Facility.AddressLineTwo,
+                    p.Facility.City,
+                    p.Facility.State,
+                    StateName = p.Facility.StateNavigation.Name,
+                    StateCode = p.Facility.StateNavigation.Code,
+                    p.Facility.ZipCode
+                },
+                People = p.IscDirectorypeople.Select(p => new
+                {
+                    p.Id,
+                    p.FirstName,
+                    p.LastName,
+                    p.JobPosition,
+                    p.FacilityPhoneNumberId,
+                    p.FacilityPhoneNumber.PhoneNumber,
+                    p.PhoneExtension,
+                    CorporateCellphone = p.CorporateCellphone ?? "",
+                    p.Email,
+                    p.DirectoryDepartmentId,
+                    p.DirectoryDepartment.DepartmentName
+                })
             })
             .FirstOrDefault();
         
@@ -147,7 +219,7 @@ public class DirectoryController : ControllerBase
                     p.FacilityPhoneNumberId,
                     p.FacilityPhoneNumber.PhoneNumber,
                     p.PhoneExtension,
-                    p.CorporateCellphone,
+                    CorporateCellphone = p.CorporateCellphone ?? "",
                     p.Email,
                     p.DirectoryDepartmentId,
                     p.DirectoryDepartment
@@ -175,7 +247,7 @@ public class DirectoryController : ControllerBase
                     p.FacilityPhoneNumberId,
                     p.FacilityPhoneNumber.PhoneNumber,
                     p.PhoneExtension,
-                    p.CorporateCellphone,
+                    CorporateCellphone = p.CorporateCellphone ?? "",
                     p.Email,
                     p.DirectoryDepartmentId,
                     p.DirectoryDepartment
@@ -208,7 +280,7 @@ public class DirectoryController : ControllerBase
                 p.FacilityPhoneNumberId,
                 p.FacilityPhoneNumber.PhoneNumber,
                 p.PhoneExtension,
-                p.CorporateCellphone,
+                CorporateCellphone = p.CorporateCellphone ?? "",
                 p.Email,
                 p.DirectoryDepartmentId,
                 p.DirectoryDepartment

@@ -9,22 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Modifying MetricService.cs">
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/DirectoryController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/FacilityController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/UsStateController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscDirectorydepartment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscDirectoryperson.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscFacility.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscFacilityphonenumber.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscUsState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/DirectoryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/FacilityService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Contexts/InterServiceCenterContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/PostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/StatusBarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Program.cs" afterDir="false" />
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Adding Virtual Phone Directory System">
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/DirectoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/DirectoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscDirectoryperson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscDirectoryperson.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +172,7 @@
       <workItem from="1735493871791" duration="41000" />
       <workItem from="1735507332837" duration="20315000" />
       <workItem from="1736722534614" duration="4595000" />
-      <workItem from="1738696262176" duration="7393000" />
+      <workItem from="1738696262176" duration="16562000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -283,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736729915110</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Adding Virtual Phone Directory System">
+      <option name="closed" value="true" />
+      <created>1738809535290</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738809535290</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +300,8 @@
     <MESSAGE value="." />
     <MESSAGE value="Adding MetricController.cs and MetricService.cs to add post metrics to the frontend" />
     <MESSAGE value="Modifying MetricService.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifying MetricService.cs" />
+    <MESSAGE value="Adding Virtual Phone Directory System" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Virtual Phone Directory System" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

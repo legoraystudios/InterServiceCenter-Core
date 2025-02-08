@@ -17,7 +17,7 @@ public partial class IscDirectoryperson
 
     public string PhoneExtension { get; set; } = null!;
 
-    public string CorporateCellphone { get; set; } = null!;
+    public string? CorporateCellphone { get; set; } = null!;
 
     public string Email { get; set; } = null!;
 
