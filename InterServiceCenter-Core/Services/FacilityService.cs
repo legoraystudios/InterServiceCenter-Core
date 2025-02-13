@@ -28,6 +28,21 @@ public class FacilityService
             return new JsonResponse { StatusCode = 400, Message = "ERROR: This Facility Name already exist in our records." };
         }
 
+        if (facility.FacilityName == "")
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid Facility Name." };
+        }
+        
+        if (facility.AddressLineOne == "")
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid Address." };
+        }
+        
+        if (facility.State == 0)
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please select a valid State/Territory." };
+        }
+
         if (facility.ZipCode.Length > 10 || facility.ZipCode.Length == 0)
         {
             return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid Zip Code." };
@@ -64,6 +79,21 @@ public class FacilityService
         if (checkIfNameExist != null)
         {
             return new JsonResponse { StatusCode = 400, Message = "ERROR: This Facility Name already exist in our records." };
+        }
+        
+        if (facility.FacilityName == "")
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid Facility Name." };
+        }
+        
+        if (facility.AddressLineOne == "")
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please enter a valid Address." };
+        }
+        
+        if (facility.State == 0)
+        {
+            return new JsonResponse { StatusCode = 400, Message = "ERROR: Please select a valid State/Territory." };
         }
 
         if (facility.ZipCode.Length > 10 || facility.ZipCode.Length == 0)

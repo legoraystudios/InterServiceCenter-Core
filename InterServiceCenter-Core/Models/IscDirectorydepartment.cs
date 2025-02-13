@@ -23,5 +23,5 @@ public partial class IscDirectorydepartment
 
     public virtual IscFacilityphonenumber? FacilityPhoneNumber { get; set; } = null!;
 
-    public virtual ICollection<IscDirectoryperson> IscDirectorypeople { get; set; } = new List<IscDirectoryperson>();
+    public virtual ICollection<IscDirectoryperson>? IscDirectorypeople { get; set; } = new List<IscDirectoryperson>();
 }

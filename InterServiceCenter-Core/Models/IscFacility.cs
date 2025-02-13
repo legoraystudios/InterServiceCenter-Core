@@ -23,5 +23,5 @@ public partial class IscFacility
 
     public virtual ICollection<IscFacilityphonenumber> IscFacilityphonenumbers { get; set; } = new List<IscFacilityphonenumber>();
 
-    public virtual IscUsState StateNavigation { get; set; } = null!;
+    public virtual IscUsState? StateNavigation { get; set; } = null!;
 }
