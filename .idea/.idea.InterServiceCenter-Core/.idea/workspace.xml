@@ -9,9 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="Adding Virtual Phone Directory System">
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/DirectoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/DirectoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscDirectoryperson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Models/IscDirectoryperson.cs" afterDir="false" />
+    <list default="true" id="91490934-f343-40a7-84d5-42a0eef5e491" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InterServiceCenter-Core/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/InterServiceCenter-Core/Services/AccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterServiceCenter-Core/Uploads/ProfilePhotos/07d3f59c-18cf-49f9-a1a8-ecc0d37ec6b7.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +52,8 @@
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Threading/Tasks/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/781ebca67bd71532948352c2c24f8db410449e3c21f7191a17bf21348cd4fed4/SwaggerUIMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Services/MetricService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Services/MetricService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Controllers/DirectoryController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/junin/RiderProjects/InterServiceCenter-Core/InterServiceCenter-Core/Services/FacilityService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -68,32 +71,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.InterServiceCenter-Core: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.InterServiceCenter-Core: http.executor": "Run",
-    ".NET Launch Settings Profile.InterServiceCenter-Core: https.executor": "Debug",
-    "ATTACH_DIALOG_SELECTED_HOST": "100.84.133.34@legoncio:22",
-    "Publish to folder.Build.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.6772152",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "dotNetConsole",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.InterServiceCenter-Core: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.InterServiceCenter-Core: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.InterServiceCenter-Core: https.executor&quot;: &quot;Run&quot;,
+    &quot;ATTACH_DIALOG_SELECTED_HOST&quot;: &quot;100.84.133.34@legoncio:22&quot;,
+    &quot;Publish to folder.Build.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.6772152&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dotNetConsole&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\junin\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\junin\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\junin\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\junin\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\junin\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\junin\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.InterServiceCenter-Core: https">
     <configuration name="Build" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/InterServiceCenter-Core/bin/Release/net8.0/publish" target_framework="net8.0" uuid_high="-1131696585459547567" uuid_low="-6109959975356583707" />
@@ -172,7 +175,8 @@
       <workItem from="1735493871791" duration="41000" />
       <workItem from="1735507332837" duration="20315000" />
       <workItem from="1736722534614" duration="4595000" />
-      <workItem from="1738696262176" duration="16562000" />
+      <workItem from="1738696262176" duration="23244000" />
+      <workItem from="1739557851923" duration="7430000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -278,7 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738809535290</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Updating DirectoryController.cs">
+      <option name="closed" value="true" />
+      <created>1739027873148</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739027873148</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Modifying FacilityService.cs">
+      <option name="closed" value="true" />
+      <created>1739416320495</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739416320495</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +321,9 @@
     <MESSAGE value="Adding MetricController.cs and MetricService.cs to add post metrics to the frontend" />
     <MESSAGE value="Modifying MetricService.cs" />
     <MESSAGE value="Adding Virtual Phone Directory System" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Virtual Phone Directory System" />
+    <MESSAGE value="Updating DirectoryController.cs" />
+    <MESSAGE value="Modifying FacilityService.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifying FacilityService.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

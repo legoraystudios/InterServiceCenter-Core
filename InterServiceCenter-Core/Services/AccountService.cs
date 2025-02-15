@@ -21,6 +21,9 @@ public class AccountService
     public async Task<JsonResponse> SaveProfilePhoto(AddAttachmentDTO account, string loggedEmail)
     {
         var checkIfAccountExist = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == account.Id);
+        var loggedAccount = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Email == loggedEmail);
+
+        bool isLoggedAccountAdmin = loggedAccount?.Role == "Admin" | loggedAccount?.Role == "Super Administrator";
 
         if (checkIfAccountExist == null)
             return new JsonResponse { StatusCode = 404, Message = "ERROR: Account doesn't exist in our records." };
@@ -28,7 +31,7 @@ public class AccountService
         if (checkIfAccountExist.ProfilePhotoFile != null)
             return new JsonResponse { StatusCode = 404, Message = "ERROR: You already have a profile photo." };
 
-        if (loggedEmail != checkIfAccountExist.Email)
+        if (loggedEmail != checkIfAccountExist.Email && !isLoggedAccountAdmin)
             return new JsonResponse
                 { StatusCode = 404, Message = "ERROR: You don't have permissions to perform this action." };
 
@@ -67,6 +70,9 @@ public class AccountService
     public async Task<JsonResponse> ModifyProfilePhoto(AddAttachmentDTO account, string loggedEmail)
     {
         var checkIfAccountExist = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == account.Id);
+        var loggedAccount = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Email == loggedEmail);
+
+        bool isLoggedAccountAdmin = loggedAccount?.Role == "Admin" | loggedAccount?.Role == "Super Administrator";
 
         if (checkIfAccountExist == null)
             return new JsonResponse { StatusCode = 404, Message = "ERROR: Account doesn't exist in our records." };
@@ -74,7 +80,7 @@ public class AccountService
         if (checkIfAccountExist.ProfilePhotoFile == null)
             return new JsonResponse { StatusCode = 404, Message = "ERROR: You already have a profile photo." };
 
-        if (loggedEmail != checkIfAccountExist.Email)
+        if (loggedEmail != checkIfAccountExist.Email && !isLoggedAccountAdmin)
             return new JsonResponse
                 { StatusCode = 404, Message = "ERROR: You don't have permissions to perform this action." };
 
@@ -101,6 +107,9 @@ public class AccountService
     public JsonResponse RemoveProfilePhoto(int id, string loggedEmail)
     {
         var checkIfAccountExist = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Id == id);
+        var loggedAccount = _dbContext.IscAccounts.FirstOrDefault(acct => acct.Email == loggedEmail);
+
+        bool isLoggedAccountAdmin = loggedAccount?.Role == "Admin" | loggedAccount?.Role == "Super Administrator";
 
         if (checkIfAccountExist == null)
             return new JsonResponse { StatusCode = 404, Message = "ERROR: Account doesn't exist in our records." };
@@ -109,7 +118,7 @@ public class AccountService
             return new JsonResponse
                 { StatusCode = 404, Message = "ERROR: Profile photo doesn't exist in our records." };
 
-        if (checkIfAccountExist.Email != loggedEmail)
+        if (loggedEmail != checkIfAccountExist.Email && !isLoggedAccountAdmin)
             return new JsonResponse
                 { StatusCode = 404, Message = "ERROR: You don't have permissions to perform this action." };
 
@@ -149,7 +158,7 @@ public class AccountService
             existingEmployee.HashedPassword = existingEmployee.HashedPassword;
 
             if (checkLoggedAccount?.Role == "Admin" || (checkLoggedAccount?.Role == "Super Administrator" &&
-                                                        checkLoggedAccount.Email != loggedEmail))
+                                                        existingEmployee.Email != loggedEmail))
                 existingEmployee.Role = account.Role;
             else
                 existingEmployee.Role = existingEmployee.Role;
