@@ -5,6 +5,7 @@ using InterServiceCenter_Core.Contexts;
 using InterServiceCenter_Core.Services;
 using InterServiceCenter_Core.Utilities;
 using InterServiceCenter_Core.Utilities.Authorization;
+using InterServiceCenter_Core.Utilities.SMTPMail;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -67,12 +68,7 @@ builder.Services.AddAuthorization(options =>
     // Adding Roles
     options.AddPolicy("AdminRole", policy =>
     {
-        // Adding Role Policy
-
-        //policy.RequireRole("Admin");
-        
         policy.Requirements.Add(new RoleRequirement("Admin", "Super Administrator"));
-        //policy.Requirements.Add(new RoleRequirement("Super Administrator"));
     });
 });
 
@@ -88,6 +84,7 @@ builder.Services.AddScoped<MetricService>();
 builder.Services.AddScoped<FacilityService>();
 builder.Services.AddScoped<DirectoryService>();
 builder.Services.AddScoped<JwtToken>();
+builder.Services.AddScoped<SmtpTool>();
 builder.Services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
 builder.Services.AddScoped<GeneralUtilities>();
 

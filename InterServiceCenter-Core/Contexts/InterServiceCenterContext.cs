@@ -29,6 +29,8 @@ public partial class InterServiceCenterContext : DbContext
 
     public virtual DbSet<IscFacilityphonenumber> IscFacilityphonenumbers { get; set; }
 
+    public virtual DbSet<IscPasswordresettoken> IscPasswordresettokens { get; set; }
+
     public virtual DbSet<IscPost> IscPosts { get; set; }
 
     public virtual DbSet<IscStatusbarcolor> IscStatusbarcolors { get; set; }
@@ -172,6 +174,27 @@ public partial class InterServiceCenterContext : DbContext
                 .HasForeignKey(d => d.FacilityId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("isc-facilityphonenumbers_ibfk_1");
+        });
+
+        modelBuilder.Entity<IscPasswordresettoken>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("isc-passwordresettokens");
+
+            entity.HasIndex(e => e.AccountId, "AccountId");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnType("int(11)");
+            entity.Property(e => e.AccountId).HasColumnType("int(11)");
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.ExpiresIn).HasColumnType("datetime");
+            entity.Property(e => e.Token).HasMaxLength(255);
+
+            entity.HasOne(d => d.Account).WithMany(p => p.IscPasswordresettokens)
+                .HasForeignKey(d => d.AccountId)
+                .HasConstraintName("isc-passwordresettokens_ibfk_1");
         });
 
         modelBuilder.Entity<IscPost>(entity =>

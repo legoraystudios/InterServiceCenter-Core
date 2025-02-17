@@ -31,4 +31,25 @@ public class AuthController : ControllerBase
             register.Password, register.ConfirmPassword);
         return StatusCode(response.StatusCode, new { msg = response.Message });
     }
+    
+    [HttpPost("forgot-password/{email}")]
+    public IActionResult ForgotPassword(string email)
+    {
+        var response = _authService.ForgotPassword(email);
+        return StatusCode(response.StatusCode, new { msg = response.Message });
+    }
+    
+    [HttpPost("forgot-password/check-token/{token}")]
+    public IActionResult CheckToken(string token)
+    {
+        var response = _authService.CheckToken(token);
+        return StatusCode(response.StatusCode, new { msg = response.Message });
+    }
+    
+    [HttpPost("forgot-password/reset/")]
+    public IActionResult CheckToken([FromBody] ResetPasswordDTO content)
+    {
+        var response = _authService.ResetPassword(content.Token, content.Password, content.ConfirmPassword);
+        return StatusCode(response.StatusCode, new { msg = response.Message });
+    }
 }

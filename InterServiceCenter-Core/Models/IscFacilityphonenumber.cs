@@ -13,7 +13,7 @@ public partial class IscFacilityphonenumber
 
     public virtual IscFacility? Facility { get; set; } = null!;
 
-    public virtual ICollection<IscDirectorydepartment> IscDirectorydepartments { get; set; } = new List<IscDirectorydepartment>();
+    public virtual ICollection<IscDirectorydepartment>? IscDirectorydepartments { get; set; } = new List<IscDirectorydepartment>();
 
-    public virtual ICollection<IscDirectoryperson> IscDirectorypeople { get; set; } = new List<IscDirectoryperson>();
+    public virtual ICollection<IscDirectoryperson>? IscDirectorypeople { get; set; } = new List<IscDirectoryperson>();
 }
